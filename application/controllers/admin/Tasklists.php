@@ -26,6 +26,7 @@ class Tasklists extends CI_Controller
         if ($validation->run()) {
             $tasklist->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
+            // $this->session->view("admin/tasklist/list_task");
         }
 
         $this->load->view("admin/tasklist/new_task");

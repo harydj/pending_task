@@ -40,12 +40,7 @@
 										<th>Priority</th>
 										<th>Status_Now</th>
 										<th>Status_Liniear</th>
-										<!-- <th>Done</th> -->
 										<th>Description</th>
-										<!-- <th>Total Mandays</th>
-										<th>Level Task</th>
-										<th>Type Task</th> -->
-										<!-- <th>Action</th> -->
 									</tr>
 								</thead>
 								<tbody>
@@ -88,7 +83,7 @@
 											<?php echo $tasklist->done ?>
 										</td> -->
 										<td class="small">
-											<?php echo substr($tasklist->description, 0, 120) ?>...</td>
+											<?php echo substr($tasklist->description, 0, 120) ?></td>
 										<!-- <td>
 											<?php echo $tasklist->sum_mandays ?>
 										</td>
