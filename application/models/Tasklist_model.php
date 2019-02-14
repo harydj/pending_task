@@ -100,7 +100,7 @@ class Tasklist_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        $this->task_id = uniqid();
+        // $this->task_id = uniqid();
         $this->task_name = $post["task_name"];
         $this->application = $post["application"];
         $this->pj = $post["pj"];

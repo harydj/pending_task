@@ -29,23 +29,23 @@
 							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
-										<th>Task Name</th>
-										<th>Application</th>
+										<th>Task_Name</th>
+										<th>App</th>
 										<th>PJ</th>
 										<th>Category</th>
 										<th>Mandays</th>
-										<th>Frekuensi</th>
-										<th>Start Date</th>
-										<th>End Date</th>
+										<th>Frek</th>
+										<th>Start_Date</th>
+										<th>End_Date</th>
 										<th>Priority</th>
-										<th>Status Now</th>
-										<th>Status Liniear</th>
-										<th>Done</th>
+										<th>Status_Now</th>
+										<th>Status_Liniear</th>
+										<!-- <th>Done</th> -->
 										<th>Description</th>
-										<th>Total Mandays</th>
+										<!-- <th>Total Mandays</th>
 										<th>Level Task</th>
-										<th>Type Task</th>
-										<th>Action</th>
+										<th>Type Task</th> -->
+										<!-- <th>Action</th> -->
 									</tr>
 								</thead>
 								<tbody>
@@ -79,17 +79,17 @@
 											<?php echo $tasklist->priority ?>
 										</td>
 										<td>
-											<?php echo $tasklist->stat_now ?>
+											<?php echo $tasklist->stat_now ?>%
 										</td>
 										<td>
-											<?php echo $tasklist->stat_lin ?>
+											<?php echo $tasklist->stat_lin ?>%
 										</td>
-										<td>
+										<!-- <td>
 											<?php echo $tasklist->done ?>
-										</td>
+										</td> -->
 										<td class="small">
 											<?php echo substr($tasklist->description, 0, 120) ?>...</td>
-										<td>
+										<!-- <td>
 											<?php echo $tasklist->sum_mandays ?>
 										</td>
 										<td>
@@ -97,15 +97,13 @@
 										</td>
 										<td>
 											<?php echo $tasklist->type_task ?>
-										</td>
+										</td> -->
 										<td>
-											<a href="<?php echo site_url('admin/tasklists/edit/'.$tasklist->task_id) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i></a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/tasklists/delete/'.$tasklist->task_id) ?>')"
-											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i></a>
+											<a class="text-left" href="<?php echo site_url('admin/tasklists/edit/'.$tasklist->task_id) ?>"
+											 class="btn btn-small" ><i class="fas fa-edit"></i></a>
+											 <a class="text-right" onclick="deleteConfirm('<?php echo site_url('admin/tasklists/delete/'.$tasklist->task_id) ?>')"
+ 											 href="#!" class="btn btn-small text-danger" ><i class="fas fa-trash"></i></a>
 										</td>
-
-
 									</tr>
 									<?php endforeach; ?>
 

@@ -152,7 +152,7 @@
 							<div class="form-group">
 								<label for="sum_mandays">Total Mandays*</label>
 								<input class="form-control <?php echo form_error('sum_mandays') ? 'is-invalid':'' ?>"
-								 name="sum_mandays" placeholder="total mandays"></input>
+								 name="sum_mandays" placeholder="total mandays" readonly></input>
 								<div class="invalid-feedback">
 									<?php echo form_error('sum_mandays') ?>
 								</div>
@@ -206,3 +206,5 @@
 </body>
 
 </html>
+
+<script type="text/javascript"></script>
