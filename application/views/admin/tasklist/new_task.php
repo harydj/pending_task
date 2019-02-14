@@ -207,4 +207,8 @@
 
 </html>
 
-<script type="text/javascript"></script>
+<script type="text/javascript">
+	function jumlah_mandays(start_date,end_date){
+		
+	}
+</script>

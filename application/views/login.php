@@ -30,10 +30,10 @@
 
   <div class="limiter">
     <div class="container-login100" style="background-image: url('assets/images/image.jpg');">
-      <div class="judul"style="font-family: 'Ubuntu', sans-serif;">
+      <div class="judul"style="font-family: 'Ubuntu', sans-serif;" style="font-size:50px">
         <h1>Pending Task List - IT Application</h1>
       </div>
-      <div class="wrap-login100">
+      <div class="wrap-login100" >
           <form action="<?php echo base_url('Login/aksi_login'); ?>" method="post"  class="login100-form validate-form p-l-55 p-r-55 p-t-120">
           <span class="login100-form-title">
             LOGIN

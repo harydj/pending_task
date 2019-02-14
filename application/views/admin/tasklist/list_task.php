@@ -26,7 +26,7 @@
 					<div class="card-body">
 
 						<div class="table-responsive">
-							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0" style="font-size:12px">
 								<thead>
 									<tr>
 										<th>Task_Name</th>
