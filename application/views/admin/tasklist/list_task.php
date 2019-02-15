@@ -29,6 +29,7 @@
 							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0" style="font-size:12px">
 								<thead>
 									<tr>
+										<th></th>
 										<th>Task_Name</th>
 										<th>App</th>
 										<th>PJ</th>
@@ -46,7 +47,13 @@
 								<tbody>
 									<?php foreach ($tasklists as $tasklist): ?>
 									<tr>
-										<td>
+										<td width="30">
+											<a class="text-left" href="<?php echo site_url('admin/tasklists/edit/'.$tasklist->task_id) ?>"
+											 class="btn btn-small" ><i class="fas fa-edit"></i></a>
+											 <a class="text-right" onclick="deleteConfirm('<?php echo site_url('admin/tasklists/delete/'.$tasklist->task_id) ?>')"
+ 											 href="#!" class="btn btn-small text-danger" ><i class="fas fa-trash"></i></a>
+										</td>
+										<td width="80">
 											<?php echo $tasklist->task_name ?>
 										</td>
 										<td>
@@ -93,12 +100,7 @@
 										<td>
 											<?php echo $tasklist->type_task ?>
 										</td> -->
-										<td>
-											<a class="text-left" href="<?php echo site_url('admin/tasklists/edit/'.$tasklist->task_id) ?>"
-											 class="btn btn-small" ><i class="fas fa-edit"></i></a>
-											 <a class="text-right" onclick="deleteConfirm('<?php echo site_url('admin/tasklists/delete/'.$tasklist->task_id) ?>')"
- 											 href="#!" class="btn btn-small text-danger" ><i class="fas fa-trash"></i></a>
-										</td>
+
 									</tr>
 									<?php endforeach; ?>
 

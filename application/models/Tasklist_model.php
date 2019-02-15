@@ -69,10 +69,6 @@ class Tasklist_model extends CI_Model
             'label' => 'Done',
             'rules' => 'required'],
 
-            ['field' => 'description',
-            'label' => 'Description',
-            'rules' => 'required'],
-
             ['field' => 'sum_mandays',
             'label' => 'Sum_mandays',
             'rules' => 'required'],

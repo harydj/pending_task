@@ -88,8 +88,8 @@
 								<select class="form-control <?php echo form_error('mandays') ? 'is-invalid':'' ?>"
 								 type="text" name="mandays">
 									<option value="0">-</option>
-									<option value="Y">Yes</option>
-									<option value="T">No</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
 								</select>
 								<div class="invalid-feedback">
 									<?php echo form_error('mandays') ?>
@@ -160,8 +160,8 @@
 								<select class="form-control <?php echo form_error('done') ? 'is-invalid':'' ?>"
 								 type="text" name="done">
 									<option value="0">-</option>
-									<option value="Y">Yes</option>
-									<option value="T">No</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
 								</select>
 								<div class="invalid-feedback">
 									<?php echo form_error('done') ?>
