@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2019 at 03:53 AM
+-- Generation Time: Feb 15, 2019 at 08:54 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -21,6 +21,40 @@ SET time_zone = "+00:00";
 --
 -- Database: `pending_task`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `costsaving`
+--
+
+CREATE TABLE `costsaving` (
+  `costsaving_id` int(11) NOT NULL,
+  `task_id` int(11) NOT NULL,
+  `sum_mandays` int(11) NOT NULL,
+  `cost_saving` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leveltask`
+--
+
+CREATE TABLE `leveltask` (
+  `leveltask_id` int(11) NOT NULL,
+  `detail_level` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `leveltask`
+--
+
+INSERT INTO `leveltask` (`leveltask_id`, `detail_level`) VALUES
+(1, 'Target tanggal baru'),
+(2, 'Revisi Tanggal ke 1'),
+(3, 'Revisi tanggal ke 2'),
+(4, 'Revisi tanggal ke 3');
 
 -- --------------------------------------------------------
 
@@ -53,8 +87,28 @@ CREATE TABLE `tasklists` (
 --
 
 INSERT INTO `tasklists` (`task_id`, `task_name`, `application`, `pj`, `category`, `mandays`, `frekuensi`, `start_date`, `end_date`, `priority`, `stat_now`, `stat_lin`, `done`, `description`, `sum_mandays`, `level_task`, `type_task`) VALUES
-(5, 'Aplikasi Pending Task List', 'ALL', 'TAF', 'PERMINTAAN', 'YA', 1, '2019-02-01', '2019-02-15', 'MEDIUM', 50, 80, 'No', 'Tahap Konstruksi', 15, 0, 3),
-(6, 'Aplikasi Lembur', 'ALL', 'HYQ', 'Permintaan', 'Yes', 1, '2019-02-01', '2019-02-14', 'Low', 89, 80, 'No', 'yyyyyy', 12, 1, 1);
+(7, 'Penambahan modul FPP pajak !!!', 'AFIS', 'TAF', 'Permintaan', 'Yes', 2, '2019-02-01', '2019-02-15', 'Medium', 50, 80, 'No', 'Kontruksi Aplikasi', 20, 1, 2),
+(10, 'Perbaikan modul FPT', 'ISDS', 'RKA', 'Permintaan', 'Yes', 1, '2018-03-07', '2018-03-16', 'Medium', 100, 100, 'Yes', '', 9, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `typetask`
+--
+
+CREATE TABLE `typetask` (
+  `typetask_id` int(11) NOT NULL,
+  `detail_type` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `typetask`
+--
+
+INSERT INTO `typetask` (`typetask_id`, `detail_type`) VALUES
+(1, 'Task baru '),
+(2, 'Task carry over'),
+(3, 'Task di luar tiket');
 
 -- --------------------------------------------------------
 
@@ -82,10 +136,31 @@ INSERT INTO `t_user` (`nik`, `nama`, `username`, `password`, `level`) VALUES
 --
 
 --
+-- Indexes for table `costsaving`
+--
+ALTER TABLE `costsaving`
+  ADD PRIMARY KEY (`costsaving_id`),
+  ADD KEY `task_id` (`task_id`);
+
+--
+-- Indexes for table `leveltask`
+--
+ALTER TABLE `leveltask`
+  ADD PRIMARY KEY (`leveltask_id`);
+
+--
 -- Indexes for table `tasklists`
 --
 ALTER TABLE `tasklists`
-  ADD PRIMARY KEY (`task_id`);
+  ADD PRIMARY KEY (`task_id`),
+  ADD KEY `type_task` (`type_task`),
+  ADD KEY `level_task` (`level_task`);
+
+--
+-- Indexes for table `typetask`
+--
+ALTER TABLE `typetask`
+  ADD PRIMARY KEY (`typetask_id`);
 
 --
 -- Indexes for table `t_user`
@@ -98,10 +173,33 @@ ALTER TABLE `t_user`
 --
 
 --
+-- AUTO_INCREMENT for table `costsaving`
+--
+ALTER TABLE `costsaving`
+  MODIFY `costsaving_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tasklists`
 --
 ALTER TABLE `tasklists`
-  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `costsaving`
+--
+ALTER TABLE `costsaving`
+  ADD CONSTRAINT `costsaving_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `tasklists` (`task_id`);
+
+--
+-- Constraints for table `tasklists`
+--
+ALTER TABLE `tasklists`
+  ADD CONSTRAINT `tasklists_ibfk_1` FOREIGN KEY (`type_task`) REFERENCES `typetask` (`typetask_id`),
+  ADD CONSTRAINT `tasklists_ibfk_2` FOREIGN KEY (`level_task`) REFERENCES `leveltask` (`leveltask_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
