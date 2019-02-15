@@ -48,8 +48,19 @@
 
 							<div class="form-group">
 								<label for="application">Application*</label>
-								<input class="form-control <?php echo form_error('application') ? 'is-invalid':'' ?>"
-								 type="text" name="application" placeholder="Application" value="<?php echo $tasklist->application ?>" />
+								<select class="form-control <?php echo form_error('application') ? 'is-invalid':'' ?>"
+								 type="text" name="application" value="<?php echo $tasklist->application ?>">
+									<option value="ALL">ALL</option>
+									<option value="AFIS">AFIS</option>
+									<option value="ISDS">ISDS</option>
+									<option value="Humanis">Humanis</option>
+									<option value="IIPS">IIPS</option>
+									<option value="Sales Cloud">Sales Cloud</option>
+									<option value="Service Cloud">Service Cloud</option>
+									<option value="Webla">Webla</option>
+								</select>
+								<!-- <input class="form-control <?php echo form_error('application') ? 'is-invalid':'' ?>"
+								 type="text" name="application" placeholder="Application" value="<?php echo $tasklist->application ?>" /> -->
 								<div class="invalid-feedback">
 									<?php echo form_error('application') ?>
 								</div>
@@ -66,8 +77,14 @@
 
 							<div class="form-group">
 								<label for="category">Category*</label>
-								<input class="form-control <?php echo form_error('category') ? 'is-invalid':'' ?>"
-								 type="text" name="category" placeholder="Category" value="<?php echo $tasklist->category ?>" />
+								<select class="form-control <?php echo form_error('category') ? 'is-invalid':'' ?>"
+								 type="text" name="category" value="<?php echo $tasklist->category ?>">
+									<option value="0">-</option>
+									<option value="Gangguan">Gangguan</option>
+									<option value="Permintaan">Permintaan</option>
+								</select>
+								<!-- <input class="form-control <?php echo form_error('category') ? 'is-invalid':'' ?>"
+								 type="text" name="category" placeholder="Category" value="<?php echo $tasklist->category ?>" /> -->
 								<div class="invalid-feedback">
 									<?php echo form_error('category') ?>
 								</div>
@@ -75,8 +92,14 @@
 
 							<div class="form-group">
 								<label for="mandays">Mandays*</label>
-								<input class="form-control <?php echo form_error('mandays') ? 'is-invalid':'' ?>"
-								 type="text" name="mandays" placeholder="Mandays" value="<?php echo $tasklist->mandays ?>" />
+								<select class="form-control <?php echo form_error('mandays') ? 'is-invalid':'' ?>"
+								 type="text" name="mandays" value="<?php echo $tasklist->mandays ?>">
+									<option value="0">-</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+								<!-- <input class="form-control <?php echo form_error('mandays') ? 'is-invalid':'' ?>"
+								 type="text" name="mandays" placeholder="Mandays" value="<?php echo $tasklist->mandays ?>" /> -->
 								<div class="invalid-feedback">
 									<?php echo form_error('mandays') ?>
 								</div>
@@ -111,8 +134,15 @@
 
 							<div class="form-group">
 								<label for="priority">Priority*</label>
-								<input class="form-control <?php echo form_error('priority') ? 'is-invalid':'' ?>"
-								 type="text" name="priority" placeholder="Priority" value="<?php echo $tasklist->priority ?>" />
+								<select class="form-control <?php echo form_error('priority') ? 'is-invalid':'' ?>"
+								 type="text" name="priority" value="<?php echo $tasklist->priority ?>">
+								 <option value="0">-</option>
+									<option value="Low">Low</option>
+									<option value="Medium">Medium</option>
+									<option value="High">High</option>
+								</select>
+								<!-- <input class="form-control <?php echo form_error('priority') ? 'is-invalid':'' ?>"
+								 type="text" name="priority" placeholder="Priority" value="<?php echo $tasklist->priority ?>" /> -->
 								<div class="invalid-feedback">
 									<?php echo form_error('priority') ?>
 								</div>
@@ -138,8 +168,14 @@
 
 							<div class="form-group">
 								<label for="done">Have Done?*</label>
-								<input class="form-control <?php echo form_error('done') ? 'is-invalid':'' ?>"
-								 type="text" name="done" placeholder="Yes/No" value="<?php echo $tasklist->done ?>" />
+								<select class="form-control <?php echo form_error('done') ? 'is-invalid':'' ?>"
+								 type="text" name="done" value="<?php echo $tasklist->done ?>">
+									<option value="0">-</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+								<!-- <input class="form-control <?php echo form_error('done') ? 'is-invalid':'' ?>"
+								 type="text" name="done" placeholder="Yes/No" value="<?php echo $tasklist->done ?>" /> -->
 								<div class="invalid-feedback">
 									<?php echo form_error('done') ?>
 								</div>
@@ -165,8 +201,16 @@
 
 							<div class="form-group">
 								<label for="level_task">Level Task*</label>
-								<input class="form-control <?php echo form_error('level_task') ? 'is-invalid':'' ?>"
-								 type="number" name="level_task" placeholder="Level Task" value="<?php echo $tasklist->level_task ?>" />
+								<select class="form-control <?php echo form_error('level_task') ? 'is-invalid':'' ?>"
+								 type="number" name="level_task" value="<?php echo $tasklist->level_task ?>">
+									<option value="0">-</option>
+									<option value="1">New Task</option>
+									<option value="2">1st Revision End Date</option>
+									<option value="3">2nd Revision End Date</option>
+									<option value="4">3nd Revision End Date</option>
+								</select>
+								<!-- <input class="form-control <?php echo form_error('level_task') ? 'is-invalid':'' ?>"
+								 type="number" name="level_task" placeholder="Level Task" value="<?php echo $tasklist->level_task ?>" /> -->
 								<div class="invalid-feedback">
 									<?php echo form_error('level_task') ?>
 								</div>
@@ -174,8 +218,15 @@
 
 							<div class="form-group">
 								<label for="type_task">Type Task*</label>
-								<input class="form-control <?php echo form_error('type_task') ? 'is-invalid':'' ?>"
-								 type="number" name="type_task" placeholder="Type Task" value="<?php echo $tasklist->type_task ?>" />
+								<select class="form-control <?php echo form_error('type_task') ? 'is-invalid':'' ?>"
+								 type="number" name="type_task" value="<?php echo $tasklist->type_task ?>">
+									<option value="0">-</option>
+									<option value="1">New Task from Ticket</option>
+									<option value="2">Carry Over Task</option>
+									<option value="3">Task Out of Ticket</option>
+								</select>
+								<!-- <input class="form-control <?php echo form_error('type_task') ? 'is-invalid':'' ?>"
+								 type="number" name="type_task" placeholder="Type Task" value="<?php echo $tasklist->type_task ?>" /> -->
 								<div class="invalid-feedback">
 									<?php echo form_error('type_task') ?>
 								</div>
