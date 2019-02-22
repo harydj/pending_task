@@ -26,7 +26,7 @@
 
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-hover" id="dataTable" width="100%" cellspacing="0" style="font-size:12px">
+              <table class="table table-hover table-striped table-bordered data-table" id="dataTable" width="100%" cellspacing="0" style="font-size:12px">
                 <thead>
 									<tr>
                     <th>No</th>
@@ -64,7 +64,7 @@
 										<td>
 											<a class="text-left" href="<?php echo site_url('admin/tasklists/edit/'.$tasklist->task_id) ?>"
 											 class="btn btn-small" ><i class="fas fa-edit"></i></a>
-											 <a class="text-right" onclick="deleteConfirm('<?php echo site_url('admin/tasklists/delete/'.$tasklist->task_id) ?>')"
+											 <a class="text-right" onclick="deleteConfirm('<?php echo site_url('admin/TasklistLog/delete/'.$tasklist->task_id) ?>')"
  											 href="#!" class="btn btn-small text-danger" ><i class="fas fa-trash"></i></a>
 										</td>
 									</tr>
@@ -90,10 +90,28 @@
 	<?php $this->load->view("admin/_partials/js.php") ?>
 
   <script>
+	//delete modal
   function deleteConfirm(url){
   	$('#btn-delete').attr('href', url);
   	$('#deleteModal').modal();
   }
+	//numbering dataTable
+	$(document).ready(function() {
+    var t = $('#dataTable').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "order": [[ 1, 'asc' ]]
+    } );
+
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+		} );
   </script>
 </body>
 </html>

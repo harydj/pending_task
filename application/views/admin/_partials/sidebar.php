@@ -24,7 +24,7 @@
             <span style="font-size:14px">COST SAVING</span>
           </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown" style="font-size:15px">
-              <a class="dropdown-item" href="#">Cost Saving Monitoring</a>
+              <a class="dropdown-item" href="<?php echo site_url("admin/CostMonitor/index")?>">Cost Saving Monitoring</a>
               <a class="dropdown-item" href="<?php echo site_url("admin/CostSaving/index")?>">Cost Saving Log</a>
             </div>
         </li>

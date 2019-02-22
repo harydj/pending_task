@@ -204,3 +204,11 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:fir
 div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:last-child {
   padding-right: 0;
 }
+
+.data-table-container {
+  padding: 10px;
+}
+
+.dt-buttons .btn {
+  margin-right: 3px;
+}

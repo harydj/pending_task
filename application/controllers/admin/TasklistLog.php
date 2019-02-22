@@ -7,12 +7,13 @@ class TasklistLog extends CI_Controller
   {
       parent::__construct();
       $this->load->model("Tasklist_model");
+      $this->load->model("Tasklog_model");
       $this->load->library('form_validation');
   }
 
   public function index()
   {
-      $data["tasklists"] = $this->Tasklist_model->getAll();
+      $data["tasklists"] = $this->Tasklog_model->getAll("Yes");
       $this->load->view("admin/tasklistlog/list_log", $data);
   }
 
@@ -33,9 +34,9 @@ class TasklistLog extends CI_Controller
 
   public function edit($id = null)
   {
-      if (!isset($id)) redirect('admin/tasklists');
+      if (!isset($id)) redirect('admin/TasklistLog');
 
-      $tasklist = $this->Tasklist_model;
+      $tasklist = $this->Tasklog_model;
       $validation = $this->form_validation;
       $validation->set_rules($tasklist->rules());
 
@@ -50,12 +51,12 @@ class TasklistLog extends CI_Controller
       $this->load->view("admin/tasklist/edit_task", $data);
   }
 
-  public function delete($id=null)
+  public function delete($id)
   {
       if (!isset($id)) show_404();
 
-      if ($this->Tasklist_model->delete($id)) {
-          redirect(site_url('admin/tasklists'));
+      if ($this->Tasklog_model->delete($id)) {
+          redirect(site_url('admin/TaskListLog'));
       }
   }
 

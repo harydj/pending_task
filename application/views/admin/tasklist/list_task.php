@@ -26,10 +26,10 @@
 					<div class="card-body">
 
 						<div class="table-responsive">
-							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0" style="font-size:12px">
+							<table class="table table-hover table-striped table-bordered data-table" id="dataTable" width="100%" cellspacing="0" style="font-size:12px">
 								<thead>
 									<tr>
-										<th></th>
+										<th>No</th>
 										<th>Task_Name</th>
 										<th>App</th>
 										<th>PJ</th>
@@ -41,19 +41,21 @@
 										<th>Priority</th>
 										<th>Status_Now</th>
 										<th>Status_Liniear</th>
+										<th>Done</th>
 										<th>Description</th>
+										<th></th>
+										<th>Level</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($tasklists as $tasklist): ?>
+									<?php foreach ($tasklists as $tasklist):
+											$today = date("Y-m-d");
+											$linier = $this->Tasklist_model->stLinier($today,$tasklist->start_date,$tasklist->end_date);
+										?>
 									<tr>
-										<td width="30">
-											<a class="text-left" href="<?php echo site_url('admin/tasklists/edit/'.$tasklist->task_id) ?>"
-											 class="btn btn-small" ><i class="fas fa-edit"></i></a>
-											 <a class="text-right" onclick="deleteConfirm('<?php echo site_url('admin/tasklists/delete/'.$tasklist->task_id) ?>')"
- 											 href="#!" class="btn btn-small text-danger" ><i class="fas fa-trash"></i></a>
+										<td>
 										</td>
-										<td width="80">
+										<td>
 											<?php echo $tasklist->task_name ?>
 										</td>
 										<td>
@@ -84,23 +86,17 @@
 											<?php echo $tasklist->stat_now ?>%
 										</td>
 										<td>
-											<?php echo $tasklist->stat_lin ?>%
+											<?php echo $linier ?>%
 										</td>
-										<!-- <td>
-											<?php echo $tasklist->done ?>
-										</td> -->
-										<td class="small">
-											<?php echo substr($tasklist->description, 0, 120) ?></td>
-										<!-- <td>
-											<?php echo $tasklist->sum_mandays ?>
+										<td><?php echo $tasklist->done ?></td>
+										<td><?php echo $tasklist->description ?></td>
+										<td width="30">
+											<a class="text-left" href="<?php echo site_url('admin/tasklists/edit/'.$tasklist->task_id) ?>"
+											 class="btn btn-small" ><i class="fas fa-edit"></i></a>
+											 <a class="text-right" onclick="deleteConfirm('<?php echo site_url('admin/tasklists/delete/'.$tasklist->task_id) ?>')"
+ 											 href="#!" class="btn btn-small text-danger" ><i class="fas fa-trash"></i></a>
 										</td>
-										<td>
-											<?php echo $tasklist->level_task ?>
-										</td>
-										<td>
-											<?php echo $tasklist->type_task ?>
-										</td> -->
-
+										<td><?php echo $tasklist->level_task ?></td>
 									</tr>
 									<?php endforeach; ?>
 
@@ -128,11 +124,56 @@
 
 	<?php $this->load->view("admin/_partials/js.php") ?>
 
-  <script>
+  <script type="text/javascript" charset="utf-8">
+
+	//delete modal
+
   function deleteConfirm(url){
   	$('#btn-delete').attr('href', url);
   	$('#deleteModal').modal();
   }
+	//numbering data table
+	$(document).ready(function() {
+
+    var t = $('#dataTable').DataTable( {
+        "columnDefs": [ {
+            "searchable": true,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "order": [[ 1, 'asc' ]]
+    } );
+
+		// RowCallback: function(row, data, index){
+		// 	if(data[15]== 1){
+		// 			$(row).find('td:eq(8)').css('color', 'green');
+		// 	}
+		// 	else if (data[15]== 2) {
+		// 			$(row).find('td:eq(8)').css('color', 'green');
+		// 	}
+		// 	else if (data[15]== 3) {
+		// 			$(row).find('td:eq(8)').css('color', 'blue');
+		// 	}
+		// 	else if (data[15]== 4) {
+		// 			$(row).find('td:eq(8)').css('color', 'red');
+		// 		}
+		// 	}
+		// });s
+
+
+		//search and short
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+
+		//color
+
+		// var oTable = $('table.dataTable').DataTable({
+
+
+		} );
   </script>
 
 </body>

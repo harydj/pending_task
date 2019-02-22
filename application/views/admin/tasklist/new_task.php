@@ -47,6 +47,7 @@
 								 type="text" name="application">
 									<option value="ALL">ALL</option>
 									<option value="AFIS">AFIS</option>
+									<option value="BIOS">BIOS</option>
 									<option value="ISDS">ISDS</option>
 									<option value="Humanis">Humanis</option>
 									<option value="IIPS">IIPS</option>
@@ -143,15 +144,6 @@
 								 type="number" name="stat_now" placeholder="ex: 10%" />
 								<div class="invalid-feedback">
 									<?php echo form_error('stat_now') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="stat_lin">Status Liniear*</label>
-								<input class="form-control <?php echo form_error('stat_lin') ? 'is-invalid':'' ?>"
-								 type="number" name="stat_lin" placeholder="ex: 10%" />
-								<div class="invalid-feedback">
-									<?php echo form_error('stat_lin') ?>
 								</div>
 							</div>
 
